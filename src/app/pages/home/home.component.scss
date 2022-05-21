@@ -1,0 +1,84 @@
+$main-color: #4bde95;
+$txt-color: #ffffff;
+.aside-container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+
+  &__left {
+    padding: 60px 3%;
+    background-color: $main-color;
+    height: 100vh;
+    position: relative;
+    width: 40%;
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+      height: 40vh;
+      justify-content: center;
+      margin: 0 auto;
+      padding: 0;
+      align-items: center;
+      text-align: center;
+      padding: 5%;
+    }
+
+    //   @media only screen and (max-width: 600px) {
+    //     height: 240px;
+    //     width: 100%;
+    //     padding: 5px 3%;
+    //     display: flex;
+    //     flex-direction: column;
+    //   }
+    &__backlink {
+      margin-bottom: 80px;
+      @media only screen and (max-width: 600px) {
+        margin-bottom: 0px;
+      }
+
+      a {
+        color: $txt-color;
+        text-decoration: none;
+        font-size: 16px;
+      }
+    }
+    &__span {
+      font-size: 22px;
+      color: $txt-color;
+      margin: 0 0 60px 0;
+      padding: 0;
+      display: flex;
+      max-width: 70%;
+
+      img {
+        margin-right: 17px;
+      }
+    }
+    &__card {
+      // position: absolute;
+      // right: -80px;
+      width: 280px;
+      margin: 0;
+      padding: 0;
+      height: 170px;
+      border-radius: 5px;
+      filter: drop-shadow(0px 6px 12px rgba(0, 0, 0, 0.349));
+      background: radial-gradient(73.06% 104.31% at 14.59% 58.06%, #bfbfbf 0%, #a8a8a8 33.7%, #727272 100%);
+      @media only screen and (max-width: 600px) {
+        position: relative;
+        right: 0px;
+      }
+    }
+  }
+  &__right {
+    width: 60%;
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+      padding: 5%;
+    }
+  }
+}
