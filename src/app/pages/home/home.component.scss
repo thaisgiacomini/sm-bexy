@@ -215,6 +215,9 @@ input[type="number"] {
         outline: none;
         border: none;
         float: right;
+        &:disabled {
+          background: #dddddd;
+        }
 
         @media only screen and (max-width: 600px) {
           text-align: center;
