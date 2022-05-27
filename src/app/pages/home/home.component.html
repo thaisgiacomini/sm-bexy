@@ -12,33 +12,75 @@
       </div>
 
 
-      <div class="aside-container__card"></div>
-    </div>
-    <div class="aside-container__right">
-      <div class="row">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Número do cartão" aria-label="Número do cartão">
-        </div>
-        <div class="row">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Nome (igual ao cartão)"
-              aria-label="Nome (igual ao cartão)">
+      <div class="aside-container__left__card" [ngClass]="cardDataForm.dirty ? 'active' : ''">
+        <div *ngIf="cardDataForm.dirty">
+          <img src="./../../../assets/img/visa.svg" alt="visa" title="visa">
+          <div class="aside-container__left__card__number">{{cardDataForm.get('number').value | mask: '0000 0000 0000 0000'}}
+          </div>
+          <div class="aside-container__left__card__name">{{cardDataForm.get('name').value}} <div
+              class="aside-container__left__card__validate">{{cardDataForm.get('date').value | mask: '00/00'}}</div>
           </div>
 
-        </div>
-        <div class="row">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Validade" aria-label="Validade">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="CVV" aria-label="CVV">
-          </div>
+
         </div>
 
-        <div class="row">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Número de parcelas" aria-label="Número de parcelas">
-          </div>
-        </div>
       </div>
     </div>
+    <div class="aside-container__right">
+      <sm-bread-crumb></sm-bread-crumb>
+      <div class="form" [formGroup]="cardDataForm">
+        <div class="row">
+          <div class="col-12">
+
+            <div class="aside-container__right__input">
+              <input id="number" class="input" mask="0000 0000 0000 0000"  placeholder=" " type="text"
+                formControlName="number" />
+              <label class="label" for="number">Número do cartão</label>
+              <span class="error"
+                *ngIf="cardDataForm.get('number').invalid && (cardDataForm.get('number').dirty || cardDataForm.get('number').touched)">
+                Número de cartão inválido</span>
+            </div>
+
+          </div>
+
+          <div class="col-12">
+
+            <div class="aside-container__right__input">
+              <input id="name" class="input" placeholder=" " type="text" maxlength="20" formControlName="name" />
+              <label class="label" for="name"> Nome (igual ao cartão)</label>
+              <span class="error"
+                *ngIf="cardDataForm.get('name').invalid && (cardDataForm.get('name').dirty || cardDataForm.get('name').touched)">
+                Insira seu nome completo</span>
+
+            </div>
+
+          </div>
+
+
+
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="aside-container__right__input">
+              <input id="date" class="input" placeholder=" "  mask="00/00"  type="text" formControlName="date" />
+              <label class="label" for="date">Validade</label>
+              <span class="error"
+                *ngIf="cardDataForm.get('date').invalid && (cardDataForm.get('date').dirty || cardDataForm.get('date').touched)">
+                Data inválida</span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="aside-container__right__input">
+              <input id="cvv" class="input" placeholder=" " mask="000" type="text" formControlName="cvv" />
+              <label class="label" for="cvv">CVV</label>
+              <span class="error"
+                *ngIf="cardDataForm.get('cvv').invalid && (cardDataForm.get('cvv').dirty || cardDataForm.get('cvv').touched)">
+                Código inválido</span>
+            </div>
+          </div>
+        </div>
+        <button class="form__button" [disabled]="cardDataForm.invalid">Continuar</button>
+      </div>
+
+    </div>
+  </div>

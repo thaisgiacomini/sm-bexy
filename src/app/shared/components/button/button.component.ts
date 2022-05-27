@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'tk-button',
+  selector: 'sm-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss']
 })

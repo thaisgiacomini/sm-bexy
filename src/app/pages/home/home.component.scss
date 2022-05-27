@@ -1,5 +1,16 @@
 $main-color: #4bde95;
 $txt-color: #ffffff;
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 .aside-container {
   margin: 0;
   padding: 0;
@@ -14,8 +25,8 @@ $txt-color: #ffffff;
     padding: 60px 3%;
     background-color: $main-color;
     height: 100vh;
-    position: relative;
     width: 40%;
+    margin-right: 15%;
     @media only screen and (max-width: 600px) {
       width: 100%;
       height: 40vh;
@@ -52,11 +63,33 @@ $txt-color: #ffffff;
       margin: 0 0 60px 0;
       padding: 0;
       display: flex;
-      max-width: 70%;
+      width: 100%;
+      @media only screen and (max-width: 600px) {
+        font-size: 16px;
+        color: #ffffff;
+        margin: 0;
+        /* padding: 0; */
+        display: flex;
+        /* width: 100%; */
+        padding: 20% 8% 7% 8%;
+        max-width: 100%;
+      }
 
       img {
+        @media only screen and (max-width: 600px) {
+          margin-right: 0;
+        }
         margin-right: 17px;
       }
+    }
+    .active {
+      background: radial-gradient(
+        73.06% 104.31% at 14.59% 58.06%,
+        #5a7589 0%,
+        #436175 33.7%,
+        #315266 57.29%,
+        #124768 100%
+      ) !important;
     }
     &__card {
       // position: absolute;
@@ -68,17 +101,134 @@ $txt-color: #ffffff;
       border-radius: 5px;
       filter: drop-shadow(0px 6px 12px rgba(0, 0, 0, 0.349));
       background: radial-gradient(73.06% 104.31% at 14.59% 58.06%, #bfbfbf 0%, #a8a8a8 33.7%, #727272 100%);
+      position: relative;
+      left: 50%;
       @media only screen and (max-width: 600px) {
         position: relative;
         right: 0px;
+        left: 0px;
+        margin: 0 auto;
+      }
+      img {
+        width: 40%;
+        display: flex;
+        padding: 10%;
+      }
+      &__number{
+        word-spacing: 12px;
+        color: white;
+        padding: 7px 10%;
+      }
+      &__name {
+        color: white;
+        padding: 7px 10%;
+      }
+      &__name {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+      }
+      &__validate {
+        color: white;
+        padding: 7px 10%;
       }
     }
   }
   &__right {
     width: 60%;
+    display: flex;
+    padding: 8% 3%;
+    justify-content: right;
+    flex-direction: column;
+
     @media only screen and (max-width: 600px) {
       width: 100%;
-      padding: 5%;
+      padding: 25% 5% 15% 5%;
+    }
+
+    &__input {
+      position: relative;
+      width: 100%;
+      height: 6em;
+      box-sizing: border-box;
+      padding-bottom: 5px;
+
+      input.ng-invalid.ng-touched {
+        border-bottom: 1px solid red;
+      }
+      input {
+        border: 0;
+        border-bottom: 1px solid #c6c6c6;
+        transition: 0.2s ease-in-out;
+        outline: none;
+        color: #3c3c3c;
+        font-size: 20px;
+        line-height: 32px;
+        padding-bottom: 5px;
+        width: 100%;
+        &:placeholder {
+          -moz-user-select: none;
+        }
+        &:-webkit-input-placeholder {
+          -webkit-user-select: none;
+        }
+        &:-ms-input-placeholder {
+          -ms-user-select: none;
+        }
+        &:not(:placeholder-shown),
+        &:focus {
+          border-bottom: 1px solid #c6c6c6;
+        }
+        &:not(:placeholder-shown) + label,
+        &:focus + label {
+          color: #c6c6c6;
+          font-size: 16px;
+          top: -25px;
+        }
+      }
+
+      label {
+        top: 0;
+        left: 0;
+        right: 0;
+        color: #c6c6c6;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        font-size: 16px;
+        cursor: text;
+        transition: 0.2s ease-in-out;
+        box-sizing: border-box;
+        -webkit-user-select: none;
+      }
+    }
+
+    .form {
+      &__button {
+        background: #308e5f;
+        border-radius: 4px;
+        color: $txt-color;
+        font-size: 15px;
+        padding: 8px 19px;
+        margin: 0;
+        outline: none;
+        border: none;
+        float: right;
+
+        @media only screen and (max-width: 600px) {
+          text-align: center;
+          display: flex;
+          margin: 0 auto;
+        }
+      }
     }
   }
+  .error {
+    color: #eb5757;
+    font-size: 16px;
+  }
+}
+sm-bread-crumb{
+  text-align:right;
 }
